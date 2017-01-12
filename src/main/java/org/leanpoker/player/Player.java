@@ -62,7 +62,7 @@ public class Player {
             }
         } else {
             if (commCards.contains(rank0) || commCards.contains(rank1)) {
-                return jObject.get("current_buy_in").getAsInt() + jObject.get("minimum_raise").getAsInt();
+                return jObject.get("current_buy_in").getAsInt() - details.get("bet").getAsInt();
             } else {
                 return 0;
             }
