@@ -24,14 +24,14 @@ public class PlayerServlet extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         if (req.getParameter("action").equals("bet_request")) {
             String gameState = (String)req.getAttribute("game_state");
-            String inAction = (String)req.getAttribute("in_action");
-            String players = (String)req.getAttribute("players");
-            String communityCards = (String)req.getAttribute("community_cards");
-            System.err.println("\n_______________________________________________________________________________");
-
-            System.err.println("New logging:" + players + gameState + inAction + communityCards);
-
-            System.err.println("_______________________________________________________________________________\n");
+//            String inAction = (String)req.getAttribute("in_action");
+//            String players = (String)req.getAttribute("players");
+//            String communityCards = (String)req.getAttribute("community_cards");
+//            System.err.println("\n_______________________________________________________________________________");
+//
+//            System.err.println("New logging:" + players + gameState + inAction + communityCards);
+//
+//            System.err.println("_______________________________________________________________________________\n");
             resp.getWriter().print(Player.betRequest(new JsonParser().parse(gameState)));
         }
         if (req.getParameter("action").equals("showdown")) {
