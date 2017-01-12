@@ -40,6 +40,10 @@ public class Player {
 
         JsonArray community_cards = jObject.get("community_cards").getAsJsonArray();
 
+        System.err.println("\n_____________________________________________________________________");
+        System.err.println("COMMUNITY CARDS: " + community_cards);
+        System.err.println("_____________________________________________________________________\n");
+
         List<String> highcards = Arrays.asList("10", "J", "Q", "K", "A");
 
         System.err.println("Current buy" + jObject.get("current_buy_in").getAsInt());
