@@ -67,9 +67,9 @@ public class Player {
 
         if (community_cards.size() == 0) {
             //If we don't have flop
-            if (highcards.contains(rank0) && highcards.contains(rank1)) {
+            if (highcards.contains(rank0) || highcards.contains(rank1)) {
                 System.err.println("Without flop, high cards");
-                return jObject.get("current_buy_in").getAsInt() + jObject.get("minimum_raise").getAsInt()*3;
+                return jObject.get("current_buy_in").getAsInt() + jObject.get("minimum_raise").getAsInt();
             } else if (rank0.equals(rank1)) {
                 System.err.println("Without flop, hand pair");
                 return jObject.get("current_buy_in").getAsInt() + jObject.get("minimum_raise").getAsInt()*3;
