@@ -78,7 +78,7 @@ public class Player {
             } else if (cardsSuits.containsValue(2) && (highcards.contains(rank0) && highcards.contains(rank1))) {
                 System.err.println("without river - same Suits");
                 return jObject.get("current_buy_in").getAsInt() + jObject.get("minimum_raise").getAsInt();
-            } if (highcards.contains(rank0) && highcards.contains(rank1)) {
+            } else if (highcards.contains(rank0) && highcards.contains(rank1)) {
                 System.err.println("Without flop, high cards");
                 return jObject.get("current_buy_in").getAsInt() + jObject.get("minimum_raise").getAsInt();
             } else {
