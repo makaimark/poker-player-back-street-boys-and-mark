@@ -39,7 +39,9 @@ public class Player {
 
         JsonArray community_cards = jObject.get( "community_cards").getAsJsonArray();
 
-//        System.err.println("Community_cards: " + community_cards.get(0) + community_cards.get(1) + community_cards.get(2));
+        if (community_cards.size() > 0) {
+            System.err.println("Community_cards: " + community_cards.get(0) + community_cards.get(1) + community_cards.get(2));
+        }
         List<String> highcards = Arrays.asList("J", "Q", "K", "A");
         List<String> mediumcards = Arrays.asList("8", "9", "10");
 
