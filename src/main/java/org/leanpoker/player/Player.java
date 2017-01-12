@@ -43,10 +43,14 @@ public class Player {
         List<String> highcards = Arrays.asList("J", "Q", "K", "A");
         List<String> mediumcards = Arrays.asList("8", "9", "10");
 
+        System.err.println("Current buy" + jObject.get("current_buy_in").getAsInt());
+
         if (highcards.contains(rank0) && highcards.contains(rank1)) {
-            return jObject.get("current_buy_in").getAsInt()+details.get("bet").getAsInt();
+            return jObject.get("current_buy_in").getAsInt()+jObject.get("minimum_raise").getAsInt();
         } else if ((highcards.contains(rank0) && mediumcards.contains(rank1)) || (highcards.contains(rank1) && mediumcards.contains(rank0))) {
             return jObject.get("current_buy_in").getAsInt()-details.get("bet").getAsInt();
+        } else if (rank0.equals(rank1)) {
+            return jObject.get("current_buy_in").getAsInt()+jObject.get("minimum_raise").getAsInt();
         }
         return 0;
     }
