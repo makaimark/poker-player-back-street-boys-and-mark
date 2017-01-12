@@ -65,11 +65,6 @@ public class Player {
             }
         }
 
-        System.err.println("CARD SUIT NUMBER: " + cardsSuits.get("clubs"));
-        System.err.println("CARD SUIT NUMBER: " + cardsSuits.get("diamonds"));
-        System.err.println("CARD SUIT NUMBER: " + cardsSuits.get("hearts"));
-        System.err.println("CARD SUIT NUMBER: " + cardsSuits.get("spades"));
-
         if (community_cards.size() == 0) {
             //If we don't have flop
             if (rank0.equals(rank1)) {
@@ -84,6 +79,8 @@ public class Player {
             } else {
                 return 0;
             }
+        } else if (community_cards.size() == 3) {
+            return jObject.get("current_buy_in").getAsInt() + jObject.get("minimum_raise").getAsInt();
         } else {
             if (commCards.contains(rank0) || commCards.contains(rank1)) {
                 System.err.println("flop-turn-river - pair");
