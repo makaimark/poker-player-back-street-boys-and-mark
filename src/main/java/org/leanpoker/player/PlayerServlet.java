@@ -27,7 +27,7 @@ public class PlayerServlet extends HttpServlet {
             String players = req.getParameter("players");
             String communityCards = req.getParameter("community_cards");
             System.err.println("\n_______________________________________________________________________________");
-            System.err.println("Logging:" + inAction + communityCards);
+            System.err.println("Logging 1.0:" + inAction + communityCards);
             System.err.println("_______________________________________________________________________________\n");
             resp.getWriter().print(Player.betRequest(new JsonParser().parse(gameState)));
         }
