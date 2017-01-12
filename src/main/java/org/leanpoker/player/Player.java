@@ -44,8 +44,8 @@ public class Player {
         List<String> mediumcards = Arrays.asList("8", "9", "10");
 
         System.err.println("Current buy" + jObject.get("current_buy_in").getAsInt());
-        return 0;
 
+        return jObject.get("current_buy_in").getAsInt() - details.get("bet").getAsInt();
 
 //        List<String> commCards = new ArrayList<>();
 //        for (int i = 0; i < community_cards.size(); i++) {
