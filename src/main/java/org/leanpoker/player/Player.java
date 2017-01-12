@@ -62,7 +62,7 @@ public class Player {
                 cardsSuits.put(String.valueOf(community_cards.get(i).getAsJsonObject().get("suit")), cardsSuits.get(String.valueOf(community_cards.get(i).getAsJsonObject().get("suit")) + 1));
             } else {
                 cardsSuits.put(String.valueOf(community_cards.get(i).getAsJsonObject().get("suit")), 1);
-            }
+            } //deploy
         }
 
         if (community_cards.size() == 0) {
