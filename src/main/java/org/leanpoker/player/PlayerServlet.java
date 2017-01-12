@@ -9,8 +9,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
+
 @WebServlet("/")
 public class PlayerServlet extends HttpServlet {
+
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -23,7 +25,7 @@ public class PlayerServlet extends HttpServlet {
             String gameState = req.getParameter("game_state");
             String holeCards = req.getParameter("hole_cards");
             String communityCards = req.getParameter("community_cards");
-            System.out.println("Logging:" + holeCards + communityCards);
+            System.err.println("Logging:" + holeCards + communityCards);
             resp.getWriter().print(Player.betRequest(new JsonParser().parse(gameState)));
         }
         if (req.getParameter("action").equals("showdown")) {
