@@ -88,8 +88,10 @@ public class Player {
                 System.err.println("flop-turn-river - pair");
                 return jObject.get("current_buy_in").getAsInt() + jObject.get("minimum_raise").getAsInt();
             } else if (cardsSuits.containsValue(4)) {
+                System.err.println("4 same color");
                 return jObject.get("current_buy_in").getAsInt() + jObject.get("minimum_raise").getAsInt();
             } else if (cardsSuits.containsValue(5)) {
+                System.err.println("5 same color");
                 return jObject.get("current_buy_in").getAsInt() + jObject.get("minimum_raise").getAsInt();
             } else
             {System.err.println("flop-turn-river without pair");
