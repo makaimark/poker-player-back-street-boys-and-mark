@@ -40,10 +40,6 @@ public class Player {
 
         JsonArray community_cards = jObject.get("community_cards").getAsJsonArray();
 
-        System.err.println("\n_____________________________________________________________________");
-        System.err.println("COMMUNITY CARDS: " + community_cards);
-        System.err.println("_____________________________________________________________________\n");
-
         List<String> highcards = Arrays.asList("10", "J", "Q", "K", "A");
 
         System.err.println("Current buy" + jObject.get("current_buy_in").getAsInt());
@@ -67,6 +63,10 @@ public class Player {
             } else {
                 cardsSuits.put(String.valueOf(community_cards.get(i).getAsJsonObject().get("suit")), 1);
             }
+        }
+
+        for (int i = 0; i < cardsSuits.size(); i++) {
+            System.err.println("CARD SUIT NUMBER " + i + ": " + cardsSuits.get(i));
         }
 
         if (community_cards.size() == 0) {
