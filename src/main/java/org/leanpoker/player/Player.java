@@ -45,7 +45,7 @@ public class Player {
         System.err.println("Current buy" + jObject.get("current_buy_in").getAsInt());
 
         List<String> commCards = new ArrayList<>();
-        for (int i = 0; i <= community_cards.size(); i++) {
+        for (int i = 0; i < community_cards.size(); i++) {
             commCards.add(String.valueOf(community_cards.get(i).getAsJsonObject().get("rank")));
         }
 
