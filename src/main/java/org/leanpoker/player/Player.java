@@ -73,7 +73,7 @@ public class Player {
             //If we don't have flop
             if (rank0.equals(rank1)) {
                 System.err.println("Without flop, hand pair");
-                return jObject.get("current_buy_in").getAsInt() + jObject.get("minimum_raise").getAsInt()*3;
+                return jObject.get("current_buy_in").getAsInt() + jObject.get("minimum_raise").getAsInt();
             } else if (cardsSuits.containsValue(2) && (highcards.contains(rank0) || highcards.contains(rank1))) {
                 System.err.println("without river - same Suits");
                 return jObject.get("current_buy_in").getAsInt() + jObject.get("minimum_raise").getAsInt();
@@ -92,7 +92,7 @@ public class Player {
                 return jObject.get("current_buy_in").getAsInt() + jObject.get("minimum_raise").getAsInt();
             } else if (cardsSuits.containsValue(5)) {
                 System.err.println("5 same color");
-                return ourPlayer.getAsJsonObject().get("stack").getAsInt();
+                return jObject.get("current_buy_in").getAsInt() + jObject.get("minimum_raise").getAsInt()*3;
             } else
             {System.err.println("flop-turn-river without pair");
                 return 0;
