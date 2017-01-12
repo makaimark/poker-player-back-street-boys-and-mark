@@ -71,18 +71,19 @@ public class Player {
 
         if (community_cards.size() == 0) {
             //If we don't have flop
-            if (rank0.equals(rank1)) {
-                System.err.println("Without flop, hand pair");
-                return jObject.get("current_buy_in").getAsInt() + jObject.get("minimum_raise").getAsInt();
-            } else if (cardsSuits.containsValue(2) && (highcards.contains(rank0) || highcards.contains(rank1))) {
-                System.err.println("without river - same Suits");
-                return jObject.get("current_buy_in").getAsInt() + jObject.get("minimum_raise").getAsInt();
-            } if (highcards.contains(rank0) || highcards.contains(rank1)) {
-                System.err.println("Without flop, high cards");
-                return jObject.get("current_buy_in").getAsInt() + jObject.get("minimum_raise").getAsInt();
-            } else {
-                return 0;
-            }
+            return jObject.get("current_buy_in").getAsInt() + jObject.get("minimum_raise").getAsInt();
+//            if (rank0.equals(rank1)) {
+//                System.err.println("Without flop, hand pair");
+//                return jObject.get("current_buy_in").getAsInt() + jObject.get("minimum_raise").getAsInt();
+//            } else if (cardsSuits.containsValue(2) && (highcards.contains(rank0) || highcards.contains(rank1))) {
+//                System.err.println("without river - same Suits");
+//                return jObject.get("current_buy_in").getAsInt() + jObject.get("minimum_raise").getAsInt();
+//            } if (highcards.contains(rank0) || highcards.contains(rank1)) {
+//                System.err.println("Without flop, high cards");
+//                return jObject.get("current_buy_in").getAsInt() + jObject.get("minimum_raise").getAsInt();
+//            } else {
+//                return 0;
+//            }
         } else {
             if (commCards.contains(rank0) || commCards.contains(rank1)) {
                 System.err.println("flop-turn-river - pair");
