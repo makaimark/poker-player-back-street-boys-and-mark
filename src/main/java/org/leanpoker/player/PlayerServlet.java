@@ -23,7 +23,7 @@ public class PlayerServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         if (req.getParameter("action").equals("bet_request")) {
-            String gameState = (String)req.getAttribute("game_state");
+            String gameState = req.getParameter("game_state");
 //            String inAction = (String)req.getAttribute("in_action");
 //            String players = (String)req.getAttribute("players");
 //            String communityCards = (String)req.getAttribute("community_cards");
