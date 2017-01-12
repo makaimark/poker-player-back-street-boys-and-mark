@@ -12,10 +12,10 @@ public class Player {
 
     public static int betRequest(JsonElement request) {
 
-        JsonObject jObject = request.getAsJsonObject();
-        JsonArray players = jObject.getAsJsonArray("players");
+        //JsonObject jObject = request.getAsJsonObject();
+        //JsonArray players = jObject.getAsJsonArray("players");
         System.err.println("\n_____________________________________________________________________");
-        System.err.println(players);
+        System.err.println("LOG: " + request);
         System.err.println("_____________________________________________________________________\n");
 
 //        JsonObject json = request.getAsJsonObject();
