@@ -87,12 +87,11 @@ public class Player {
             if (commCards.contains(rank0) || commCards.contains(rank1)) {
                 System.err.println("flop-turn-river - pair");
                 return jObject.get("current_buy_in").getAsInt() + jObject.get("minimum_raise").getAsInt();
-            }
-                //            } else if (cardsSuits.containsValue(4)) {
-//                return jObject.get("current_buy_in").getAsInt() + jObject.get("minimum_raise").getAsInt();
-//            } else if (cardsSuits.containsValue(5)) {
-//                return jObject.get("current_buy_in").getAsInt() + jObject.get("minimum_raise").getAsInt();
-//            } else {
+            } else if (cardsSuits.containsValue(4)) {
+                return jObject.get("current_buy_in").getAsInt() + jObject.get("minimum_raise").getAsInt();
+            } else if (cardsSuits.containsValue(5)) {
+                return jObject.get("current_buy_in").getAsInt() + jObject.get("minimum_raise").getAsInt();
+            } else
             {System.err.println("flop-turn-river without pair");
                 return 0;
             }
