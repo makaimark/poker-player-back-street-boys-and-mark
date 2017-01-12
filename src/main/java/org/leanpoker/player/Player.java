@@ -13,7 +13,15 @@ public class Player {
 
         JsonObject jObject = request.getAsJsonObject();
         jObject = jObject.getAsJsonObject("gameState");
+        System.err.println("\n_____________________________________________________________________");
         System.err.println(jObject);
+        System.err.println("_____________________________________________________________________\n");
+
+//        JsonObject json = request.getAsJsonObject();
+//        JsonElement gameState = json.get("game_state");
+//        System.err.println("\n_____________________________________________________________________");
+//        System.err.println("Log:" + gameState);
+//        System.err.println("_____________________________________________________________________\n");
         return 1000;
     }
 

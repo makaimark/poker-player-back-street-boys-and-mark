@@ -16,6 +16,4 @@ public class PlayerTest {
         assertEquals(1000, Player.betRequest(jsonElement));
 
     }
-
-    @Test
 }
