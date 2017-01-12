@@ -15,7 +15,7 @@ public class Player {
     public static int betRequest(JsonElement request) {
 
         JsonObject jObject = request.getAsJsonObject();
-        String inAction =  jObject.get("in_action").getAsString();
+        String inAction = jObject.get("in_action").getAsString();
         JsonArray players = jObject.getAsJsonArray("players");
         System.err.println("\n_____________________________________________________________________");
         System.err.println("LOG: " + players.get(Integer.parseInt(inAction)));
@@ -37,24 +37,36 @@ public class Player {
 
         System.err.println("Suits and ranks: " + suit0 + rank0 + suit1 + rank1);
 
-        JsonArray community_cards = jObject.get( "community_cards").getAsJsonArray();
+        JsonArray community_cards = jObject.get("community_cards").getAsJsonArray();
 
-        if (community_cards.size() > 0) {
-            System.err.println("Community_cards: " + community_cards.get(0) + community_cards.get(1) + community_cards.get(2));
-        }
         List<String> highcards = Arrays.asList("J", "Q", "K", "A");
         List<String> mediumcards = Arrays.asList("8", "9", "10");
 
         System.err.println("Current buy" + jObject.get("current_buy_in").getAsInt());
 
-        if (highcards.contains(rank0) && highcards.contains(rank1)) {
-            return jObject.get("current_buy_in").getAsInt()+jObject.get("minimum_raise").getAsInt();
-        } else if ((highcards.contains(rank0) && mediumcards.contains(rank1)) || (highcards.contains(rank1) && mediumcards.contains(rank0))) {
-            return jObject.get("current_buy_in").getAsInt()-details.get("bet").getAsInt();
-        } else if (rank0.equals(rank1)) {
-            return jObject.get("current_buy_in").getAsInt()+jObject.get("minimum_raise").getAsInt();
+        List<String> commCards = new ArrayList<>();
+        for (int i = 0; i <= community_cards.size(); i++) {
+            commCards.add(String.valueOf(community_cards.get(i).getAsJsonObject().get("rank")));
         }
-        return 0;
+
+        if (community_cards.size() == 0) {
+            //If we don't have flop
+            if (highcards.contains(rank0) && highcards.contains(rank1)) {
+                return jObject.get("current_buy_in").getAsInt() + jObject.get("minimum_raise").getAsInt();
+            } else if ((highcards.contains(rank0) && mediumcards.contains(rank1)) || (highcards.contains(rank1) && mediumcards.contains(rank0))) {
+                return jObject.get("current_buy_in").getAsInt() - details.get("bet").getAsInt();
+            } else if (rank0.equals(rank1)) {
+                return jObject.get("current_buy_in").getAsInt() + jObject.get("minimum_raise").getAsInt();
+            } else {
+                return 0;
+            }
+        } else {
+            if (commCards.contains(rank0) || commCards.contains(rank1)) {
+                return jObject.get("current_buy_in").getAsInt() + jObject.get("minimum_raise").getAsInt();
+            } else {
+                return 0;
+            }
+        }
     }
 
     public static void showdown(JsonElement game) {
