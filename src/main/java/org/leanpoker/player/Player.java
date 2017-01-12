@@ -15,7 +15,7 @@ public class Player {
         //JsonObject jObject = request.getAsJsonObject();
         //JsonArray players = jObject.getAsJsonArray("players");
         System.err.println("\n_____________________________________________________________________");
-        System.err.println("LOG: " + request);
+        System.err.println("LOG: " + request.getAsString());
         System.err.println("_____________________________________________________________________\n");
 
 //        JsonObject json = request.getAsJsonObject();
