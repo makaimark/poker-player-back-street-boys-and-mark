@@ -81,7 +81,7 @@ public class Player {
                 System.err.println("without river - same Suits");
                 return jObject.get("current_buy_in").getAsInt() + jObject.get("minimum_raise").getAsInt();
             } else {
-                return jObject.get("current_buy_in").getAsInt() - details.get("bet").getAsInt();
+                return 0;
             }
         } else {
             if (commCards.contains(rank0) || commCards.contains(rank1)) {
