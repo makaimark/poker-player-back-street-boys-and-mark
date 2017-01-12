@@ -12,7 +12,7 @@ public class Player {
     public static int betRequest(JsonElement request) {
 
         JsonObject jObject = request.getAsJsonObject();
-        jObject = jObject.getAsJsonObject("gameState");
+        jObject = jObject.getAsJsonObject("players");
         System.err.println("\n_____________________________________________________________________");
         System.err.println(jObject);
         System.err.println("_____________________________________________________________________\n");
