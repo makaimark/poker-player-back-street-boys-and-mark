@@ -69,20 +69,20 @@ public class Player {
             //If we don't have flop
             if (highcards.contains(rank0) && highcards.contains(rank1)) {
                 System.err.println("Without flop, high cards");
-                return ourPlayer.getAsJsonObject().get("stack").getAsInt();
+                return jObject.get("current_buy_in").getAsInt() + jObject.get("minimum_raise").getAsInt()*3;
             } else if (rank0.equals(rank1)) {
                 System.err.println("Without flop, hand pair");
-                return jObject.get("current_buy_in").getAsInt() + jObject.get("minimum_raise").getAsInt();
+                return jObject.get("current_buy_in").getAsInt() + jObject.get("minimum_raise").getAsInt()*3;
             } else if (cardsSuits.containsValue(2)) {
                 System.err.println("without river - same Suits");
-                return jObject.get("current_buy_in").getAsInt() + jObject.get("minimum_raise").getAsInt();
+                return jObject.get("current_buy_in").getAsInt() + jObject.get("minimum_raise").getAsInt()*3;
             } else {
                 return 0;
             }
         } else {
             if (commCards.contains(rank0) || commCards.contains(rank1)) {
                 System.err.println("flop-turn-river - pair");
-                return ourPlayer.getAsJsonObject().get("stack").getAsInt();
+                return jObject.get("current_buy_in").getAsInt() + jObject.get("minimum_raise").getAsInt()*3;
             } else if (cardsSuits.containsValue(4)) {
                 System.err.println("4 same color");
                 return jObject.get("current_buy_in").getAsInt() + jObject.get("minimum_raise").getAsInt();
