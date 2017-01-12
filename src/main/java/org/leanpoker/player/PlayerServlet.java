@@ -26,7 +26,9 @@ public class PlayerServlet extends HttpServlet {
             String inAction = req.getParameter("in_action");
             String players = req.getParameter("players");
             String communityCards = req.getParameter("community_cards");
-            System.err.println("Logging:" + gameState + inAction + players);
+            System.err.println("\n_______________________________________________________________________________");
+            System.err.println("Logging:" + inAction + communityCards);
+            System.err.println("_______________________________________________________________________________\n");
             resp.getWriter().print(Player.betRequest(new JsonParser().parse(gameState)));
         }
         if (req.getParameter("action").equals("showdown")) {
