@@ -75,7 +75,7 @@ public class Player {
                 return jObject.get("current_buy_in").getAsInt() + jObject.get("minimum_raise").getAsInt()*3;
             } else if (cardsSuits.containsValue(2)) {
                 System.err.println("without river - same Suits");
-                return jObject.get("current_buy_in").getAsInt() + jObject.get("minimum_raise").getAsInt()*3;
+                return jObject.get("current_buy_in").getAsInt() + jObject.get("minimum_raise").getAsInt();
             } else {
                 return 0;
             }
