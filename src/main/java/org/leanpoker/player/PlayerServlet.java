@@ -28,7 +28,9 @@ public class PlayerServlet extends HttpServlet {
             String players = (String)req.getAttribute("players");
             String communityCards = (String)req.getAttribute("community_cards");
             System.err.println("\n_______________________________________________________________________________");
+
             System.err.println("New logging:" + players + gameState + inAction + communityCards);
+
             System.err.println("_______________________________________________________________________________\n");
             resp.getWriter().print(Player.betRequest(new JsonParser().parse(gameState)));
         }
