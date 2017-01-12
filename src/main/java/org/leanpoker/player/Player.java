@@ -16,7 +16,7 @@ public class Player {
         JsonObject inAction =  jObject.getAsJsonObject("in_action");
         JsonArray players = jObject.getAsJsonArray("players");
         System.err.println("\n_____________________________________________________________________");
-        System.err.println("LOG: " + players.get(Integer.parseInt(inAction.getAsString())));
+        System.err.println("LOG: " + players);
         System.err.println("in action: " + inAction);
         System.err.println("_____________________________________________________________________\n");
 
