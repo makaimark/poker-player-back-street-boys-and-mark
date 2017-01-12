@@ -40,8 +40,7 @@ public class Player {
 
         JsonArray community_cards = jObject.get("community_cards").getAsJsonArray();
 
-        List<String> highcards = Arrays.asList("J", "Q", "K", "A");
-        List<String> mediumcards = Arrays.asList("8", "9", "10");
+        List<String> highcards = Arrays.asList("10", "J", "Q", "K", "A");
 
         System.err.println("Current buy" + jObject.get("current_buy_in").getAsInt());
 
@@ -70,10 +69,7 @@ public class Player {
             //If we don't have flop
             if (highcards.contains(rank0) && highcards.contains(rank1)) {
                 System.err.println("Without flop, high cards");
-                return jObject.get("current_buy_in").getAsInt() + jObject.get("minimum_raise").getAsInt();
-            } else if ((highcards.contains(rank0) && mediumcards.contains(rank1)) || (highcards.contains(rank1) && mediumcards.contains(rank0))) {
-                System.err.println("Without flop, high and medium card");
-                return jObject.get("current_buy_in").getAsInt() - details.get("bet").getAsInt();
+                return ourPlayer.getAsJsonObject().get("stack").getAsInt();
             } else if (rank0.equals(rank1)) {
                 System.err.println("Without flop, hand pair");
                 return jObject.get("current_buy_in").getAsInt() + jObject.get("minimum_raise").getAsInt();
@@ -86,13 +82,13 @@ public class Player {
         } else {
             if (commCards.contains(rank0) || commCards.contains(rank1)) {
                 System.err.println("flop-turn-river - pair");
-                return jObject.get("current_buy_in").getAsInt() + jObject.get("minimum_raise").getAsInt();
+                return ourPlayer.getAsJsonObject().get("stack").getAsInt();
             } else if (cardsSuits.containsValue(4)) {
                 System.err.println("4 same color");
                 return jObject.get("current_buy_in").getAsInt() + jObject.get("minimum_raise").getAsInt();
             } else if (cardsSuits.containsValue(5)) {
                 System.err.println("5 same color");
-                return jObject.get("current_buy_in").getAsInt() + jObject.get("minimum_raise").getAsInt();
+                return ourPlayer.getAsJsonObject().get("stack").getAsInt();
             } else
             {System.err.println("flop-turn-river without pair");
                 return 0;
