@@ -44,58 +44,60 @@ public class Player {
         List<String> mediumcards = Arrays.asList("8", "9", "10");
 
         System.err.println("Current buy" + jObject.get("current_buy_in").getAsInt());
+        return 0;
 
-        List<String> commCards = new ArrayList<>();
-        for (int i = 0; i < community_cards.size(); i++) {
-            commCards.add(String.valueOf(community_cards.get(i).getAsJsonObject().get("rank")));
-        }
 
-        HashMap<String, Integer> cardsSuits = new HashMap<>();
-        if (suit0.equals(suit1)) {
-            cardsSuits.put(suit0, 2);
-        } else {
-            cardsSuits.put(suit0, 1);
-            cardsSuits.put(suit1, 1);
-        }
-
-        for (int i = 0; i < community_cards.size(); i++) {
-            if (cardsSuits.containsKey(String.valueOf(community_cards.get(i).getAsJsonObject().get("suit")))) {
-                cardsSuits.put(String.valueOf(community_cards.get(i).getAsJsonObject().get("suit")), cardsSuits.get(String.valueOf(community_cards.get(i).getAsJsonObject().get("suit")) + 1));
-            } else {
-                cardsSuits.put(String.valueOf(community_cards.get(i).getAsJsonObject().get("suit")), 1);
-            }
-        }
-
-        if (community_cards.size() == 0) {
-            //If we don't have flop
-            if (highcards.contains(rank0) && highcards.contains(rank1)) {
-                System.err.println("Without flop, high cards");
-                return jObject.get("current_buy_in").getAsInt() + jObject.get("minimum_raise").getAsInt();
-            } else if ((highcards.contains(rank0) && mediumcards.contains(rank1)) || (highcards.contains(rank1) && mediumcards.contains(rank0))) {
-                System.err.println("Without flop, high and medium card");
-                return jObject.get("current_buy_in").getAsInt() - details.get("bet").getAsInt();
-            } else if (rank0.equals(rank1)) {
-                System.err.println("Without flop, hand pair");
-                return jObject.get("current_buy_in").getAsInt() + jObject.get("minimum_raise").getAsInt();
-            } else if (cardsSuits.containsValue(2)) {
-                System.err.println("without river - same Suits");
-                return jObject.get("current_buy_in").getAsInt() + jObject.get("minimum_raise").getAsInt();
-            } else {
-                return 0;
-            }
-        } else {
-            if (commCards.contains(rank0) || commCards.contains(rank1)) {
-                System.err.println("flop-turn-river - pair");
-                return jObject.get("current_buy_in").getAsInt() + jObject.get("minimum_raise").getAsInt();
-            } else if (cardsSuits.containsValue(4)) {
-                return jObject.get("current_buy_in").getAsInt() + jObject.get("minimum_raise").getAsInt();
-            } else if (cardsSuits.containsValue(5)) {
-                return jObject.get("current_buy_in").getAsInt() + jObject.get("minimum_raise").getAsInt();
-            } else
-            {System.err.println("flop-turn-river without pair");
-                return 0;
-            }
-        }
+//        List<String> commCards = new ArrayList<>();
+//        for (int i = 0; i < community_cards.size(); i++) {
+//            commCards.add(String.valueOf(community_cards.get(i).getAsJsonObject().get("rank")));
+//        }
+//
+//        HashMap<String, Integer> cardsSuits = new HashMap<>();
+//        if (suit0.equals(suit1)) {
+//            cardsSuits.put(suit0, 2);
+//        } else {
+//            cardsSuits.put(suit0, 1);
+//            cardsSuits.put(suit1, 1);
+//        }
+//
+//        for (int i = 0; i < community_cards.size(); i++) {
+//            if (cardsSuits.containsKey(String.valueOf(community_cards.get(i).getAsJsonObject().get("suit")))) {
+//                cardsSuits.put(String.valueOf(community_cards.get(i).getAsJsonObject().get("suit")), cardsSuits.get(String.valueOf(community_cards.get(i).getAsJsonObject().get("suit")) + 1));
+//            } else {
+//                cardsSuits.put(String.valueOf(community_cards.get(i).getAsJsonObject().get("suit")), 1);
+//            }
+//        }
+//
+//        if (community_cards.size() == 0) {
+//            //If we don't have flop
+//            if (highcards.contains(rank0) && highcards.contains(rank1)) {
+//                System.err.println("Without flop, high cards");
+//                return jObject.get("current_buy_in").getAsInt() + jObject.get("minimum_raise").getAsInt();
+//            } else if ((highcards.contains(rank0) && mediumcards.contains(rank1)) || (highcards.contains(rank1) && mediumcards.contains(rank0))) {
+//                System.err.println("Without flop, high and medium card");
+//                return jObject.get("current_buy_in").getAsInt() - details.get("bet").getAsInt();
+//            } else if (rank0.equals(rank1)) {
+//                System.err.println("Without flop, hand pair");
+//                return jObject.get("current_buy_in").getAsInt() + jObject.get("minimum_raise").getAsInt();
+//            } else if (cardsSuits.containsValue(2)) {
+//                System.err.println("without river - same Suits");
+//                return jObject.get("current_buy_in").getAsInt() + jObject.get("minimum_raise").getAsInt();
+//            } else {
+//                return 0;
+//            }
+//        } else {
+//            if (commCards.contains(rank0) || commCards.contains(rank1)) {
+//                System.err.println("flop-turn-river - pair");
+//                return jObject.get("current_buy_in").getAsInt() + jObject.get("minimum_raise").getAsInt();
+//            } else if (cardsSuits.containsValue(4)) {
+//                return jObject.get("current_buy_in").getAsInt() + jObject.get("minimum_raise").getAsInt();
+//            } else if (cardsSuits.containsValue(5)) {
+//                return jObject.get("current_buy_in").getAsInt() + jObject.get("minimum_raise").getAsInt();
+//            } else
+//            {System.err.println("flop-turn-river without pair");
+//                return 0;
+//            }
+//        }
     }
 
     public static void showdown(JsonElement game) {
