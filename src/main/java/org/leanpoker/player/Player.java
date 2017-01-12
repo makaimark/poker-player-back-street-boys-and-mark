@@ -65,9 +65,10 @@ public class Player {
             }
         }
 
-        for (int i = 0; i < cardsSuits.size(); i++) {
-            System.err.println("CARD SUIT NUMBER " + i + ": " + cardsSuits.get(i));
-        }
+        System.err.println("CARD SUIT NUMBER: " + cardsSuits.get("clubs"));
+        System.err.println("CARD SUIT NUMBER: " + cardsSuits.get("diamonds"));
+        System.err.println("CARD SUIT NUMBER: " + cardsSuits.get("hearts"));
+        System.err.println("CARD SUIT NUMBER: " + cardsSuits.get("spades"));
 
         if (community_cards.size() == 0) {
             //If we don't have flop
